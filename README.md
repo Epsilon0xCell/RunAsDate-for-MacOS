@@ -32,7 +32,7 @@ To use the Apple Shortcut, follow these steps:
 
 You can also customize the shortcut by adding more actions, for example you can add an action to ask for the desired date and application every time you run the shortcut.
 
-It's important to remember that the script is running on the user level and it changes the system date.
+It's important to remember that the script runs with root rights and it changes the system date. The shortcut is signed and encrypted, and its full script text is not published anywhere readable, so beyond the fragments that can be recovered from the file it cannot be independently read.
 
 
 
