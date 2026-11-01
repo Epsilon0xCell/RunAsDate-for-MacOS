@@ -3,160 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RunAsDate For MacOS: what it is, how it runs, where it stops</title>
-<meta name="description" content="Until recently, this type of tool was not available for macOS. However, I have found a way to create a &quot;Run as Date&quot; launcher for macOS.">
+<title>RunAsDate-for-MacOS: The Station Logbook</title>
+<meta name="description" content="An Apple Shortcut for macOS that changes the system date to a chosen earlier date, opens an application under that date, waits a few seconds, then puts the date back.">
 <style>
-:root {
-  --bg: #1a0c0c; --panel: #2a1412; --ink: #f0e6d6;
-  --mut: #381b18;
-  --acc: #c9a24b; --acc2: #94b2c4;
-  --line: #2a1412;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: ' Gill Sans', 'Segoe UI', sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'SF Mono', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
+@font-face{font-family:'Anek Gurmukhi';src:url('fonts/AnekGurmukhi.ttf') format('truetype');}
+@font-face{font-family:'Barlow';src:url('fonts/Barlow.ttf') format('truetype');}
+:root{--slate:#172234;--slate2:#232f47;--jade:#40d0a4;--cream:#f0ead0;--brass:#b28a4a}
+*{box-sizing:border-box} body{margin:0;background:var(--slate);color:var(--cream);font-family:'Barlow',sans-serif;line-height:1.65}
+h1,h2{font-family:'Anek Gurmukhi',sans-serif;color:var(--jade)}
+.hero{padding:2rem 6vw 1rem;max-width:1000px;margin:0 auto}.hero img.banner{width:100%;height:auto}
+.logo{width:92px;height:92px}
+main{padding:0 6vw 3rem;max-width:1000px;margin:0 auto}
+.entry{background:var(--cream);color:var(--slate);padding:1.2rem 1.5rem 1.2rem 4.2rem;margin:1.4rem 0;position:relative;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(23,34,52,.14) 28px)}
+.num{position:absolute;left:1.1rem;top:1rem;color:var(--brass);font-family:'Anek Gurmukhi',sans-serif;font-size:1.5rem}
+.entry h2{color:var(--slate);border-bottom:2px solid var(--jade);padding-bottom:.3rem}
+.slip{display:inline-block;background:var(--cream);color:var(--slate);font-family:'Anek Gurmukhi',sans-serif;text-decoration:none;padding:.55rem 1rem .55rem 1.4rem;border:1px solid var(--slate);border-left:10px solid var(--brass);margin:.3rem .3rem .3rem 0}
+.slip:hover{border-color:var(--jade);border-left-color:#d8ab5e}
+.slip:active{background:#ddd2ae}
+.slip:focus-visible{outline:2px solid var(--jade);outline-offset:3px}
+a{color:var(--cream)} a:before{content:'';display:inline-block;width:.8em;height:.5em;background:linear-gradient(90deg,var(--cream) 40%,#c4783e 40%);clip-path:polygon(0 15%,100% 35%,100% 65%,0 85%);margin-right:.4em;transition:transform .2s}
+a:hover{color:var(--brass)} a:hover:before{transform:rotate(24deg)} .slip:before{content:none}
+code{color:#0d5c43;font-weight:600}.entry code{background:rgba(178,138,74,.18);padding:.05rem .3rem}
+.margin{background:#fffbe9;border-left:10px solid var(--brass);padding:.7rem 1rem;color:var(--slate);max-width:36rem}
+.star{margin:2rem auto;text-align:center}.star svg{display:block;margin:0 auto}
+pre{background:#fffbe9;padding:1rem;overflow-x:auto;border:1px solid var(--brass);color:var(--slate)}
+footer{padding:2rem 6vw;color:var(--cream)}
 </style>
 </head>
-<body class="layout-split">
-<!-- This page exists for RunAsDate-for-MacOS alone: the layout (split-hero),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
+<body>
 <header class="hero">
-  <img class="logo" src="assets/logo.png" alt="RunAsDate For MacOS logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>RunAsDate For MacOS</h1>
-  <p class="mono"><a href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS">github.com/Epsilon0xCell/RunAsDate-for-MacOS</a></p>
+<img class="logo" src="assets/logo.png" alt="Station flag, jade over cream with a slate stripe, on a brass pole">
+<img class="banner" src="assets/banner.png" alt="Polar station at night under aurora curtains, the weather board beside the main hut door carrying the project name">
+<h1>RunAsDate-for-MacOS</h1>
+<p>The station logbook for one winter: each part of the job gets its own dated entry, ruled off in order.</p>
+<p><a class="slip" href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS">Open the repo</a> <a class="slip" href="#warning">Read the warning entry</a></p>
 </header>
-
 <main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Until recently, this type of tool was not available for macOS. However, I have found a way to create a &quot;Run as Date&quot; launcher for macOS.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>RunAsDate For MacOS: 2 files, 41 counted
-          lines across Markdown 41. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>README.md</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/Epsilon0xCell/RunAsDate-for-MacOS.git<br>$ cd RunAsDate-for-MacOS</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>README.md</code>, line 1 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code># RunAsDate-for-MacOS
-A &quot;Run as Date&quot; launcher is a tool that allows you to run an application on a specific date and time, rather than the current date and time. This can be useful for testing software that has expiration dates, or for running older versions of applications that are no longer supported on the current operating system.
-
-Until recently, this type of tool was not available for macOS. However, I have found a way to create a &quot;Run as Date&quot; launcher for macOS.
-
-# The solution
-When trying to solve the &quot;Run as Date&quot; problem on macOS, I first researched existing solutions and found that there were no readily available tools for this specific task. However, I knew that it was possible to change the system date and time using Terminal commands, so I began experimenting with different command line utilities to see if I could find a way to automate the process.
-
-After some experimentation, I discovered that I could use a combination of the &quot;date&quot; command and the &quot;open&quot; command to change the date and launch an application. I created a simple shell script that included these commands and was able to successfully run an application on a specific date.
-
-Next, I wanted to make this process more user-friendly and accessible to others, so I decided to convert the shell script into an Apple Shortcut. I used the &quot;Run Script&quot; action in the Shortcuts app to run the shell script, and added additional actions to make the shortcut more functional and intuitive to use.
-
-Overall, it was a process of experimentation and problem solving, but I was able to find a way to automate the &quot;Run as Date&quot; process using Terminal and shell script, and then convert it into an Apple Shortcut for easy use.
-
-# Instructions ( What you need to do ? )
-To use the Apple Shortcut, follow these steps:
-
- 1. Download the shortcut from the github repository.
- 2. Double click and add the shortcut to your library.
- 
-    &lt;img width=&quot;427&quot; alt=&quot;Screenshot 2023-01-24 at 10 42 32 AM&quot; src=&quot;https://user-images.githubusercontent.com/71588718/214216981-c59d1624-3508-4378-be32-3eaf514620a8.png&quot;&gt;</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>README.md</code></td><td>41</td></tr>
-        <tr><td><code>Run_As_Date.shortcut</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">no named functions in the snapshot</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS/tree/main/RunAsDate-for-MacOS-Visuals">RunAsDate-for-MacOS-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for RunAsDate For MacOS">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for RunAsDate For MacOS">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for RunAsDate For MacOS">
-        </div>
-      </section>
-    </div>
-  </section>
+<div class="star"><svg width="1200" height="22" viewBox="0 0 1200 22" style="max-width:100%"><line x1="0" y1="10" x2="1200" y2="10" stroke="#3a4c66" stroke-width="2"/><g stroke="#f0ead0" stroke-width="2"><line x1="600" y1="1" x2="600" y2="19"/><line x1="591" y1="10" x2="609" y2="10"/><line x1="594" y1="4" x2="606" y2="16"/><line x1="606" y1="4" x2="594" y2="16"/></g></svg></div>
+<section class="entry"><span class="num">1</span><h2>Entry one: the situation</h2><p>This project is an Apple Shortcut for macOS. It changes the Mac system date to a chosen earlier date, opens an application under that date, waits a few seconds, and then puts the system date back. It exists for testing software with expiry dates and for coaxing older applications that object to the current date.</p></section>
+<section class="entry"><span class="num">2</span><h2>Entry two: getting the shortcut</h2><p><b style="color:var(--brass)">1.</b> Download the file <code>Run_As_Date.shortcut</code> from the repository.</p><p><b style="color:var(--brass)">2.</b> Double click it.</p><p><b style="color:var(--brass)">3.</b> Add it to the Shortcuts library.</p></section>
+<section class="entry"><span class="num">3</span><h2>Entry three: setting it up</h2><p>Open the shortcut in the app, not with the play button, and edit two things. The date goes in as <code>MMDDHHmmYY</code>: month first, minutes in small m, year last. The application is set by swapping the example path <code>/Applications/Infuse.app</code> for the path of whatever app you want to launch.</p><div class="margin"><p>Margin note: the script contains a <code>sleep 6</code> step, six seconds before the date reverts. If your app launches slowly, raise that number.</p></div></section>
+<section class="entry"><span class="num">4</span><h2>Entry four: running it</h2><p>Tap the shortcut in the Shortcuts app or call it up with Siri. The shortcut can be extended with an action that asks for the date and application on every run, for people who switch apps often.</p></section>
+<div class="star"><svg width="400" height="10" viewBox="0 0 400 10" style="max-width:40%"><line x1="110" y1="5" x2="290" y2="5" stroke="#3a4c66" stroke-width="2"/></svg></div>
+<section class="entry" id="warning"><span class="num">5</span><h2>Entry five: the warning, ruled off</h2><p>The shortcut runs with root rights and it moves the real system clock, not a pretend clock inside one app. The shortcut file itself is signed and encrypted, and its full script text is not published in readable form, so this page describes only what the README describes and claims nothing beyond it.</p></section>
 </main>
-<footer>
-  <p>RunAsDate For MacOS is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
+<footer><p>RunAsDate-for-MacOS: the calendar turned back for a few seconds, then put right, and the watch ends with the true date showing again.</p></footer>
 </body>
 </html>
