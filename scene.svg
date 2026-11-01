@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-label="Station yard at night: aurora drifting, two lit windows breathing, a flag snapping and a windsock swinging">
+<rect width="1200" height="260" fill="#131f31"/>
+<g fill="#eef2f5"><circle cx="120" cy="30" r="1.6"/><circle cx="300" cy="52" r="1.2"><animate attributeName="opacity" values="1;.2;1" dur="11s" repeatCount="indefinite"/></circle><circle cx="520" cy="26" r="1.6"/><circle cx="760" cy="44" r="1.2"><animate attributeName="opacity" values=".3;1;.3" dur="14s" repeatCount="indefinite"/></circle><circle cx="1020" cy="30" r="1.6"/><circle cx="1120" cy="58" r="1.2"/></g>
+<g opacity=".55"><path d="M0 18 Q 300 2 620 22 T 1200 14 L 1200 120 Q 900 96 600 118 T 0 108 Z" fill="#2f9e78"><animate attributeName="opacity" values=".4;.65;.4" dur="16s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;14 0;0 0" dur="22s" repeatCount="indefinite"/></path>
+<path d="M0 60 Q 340 40 700 62 T 1200 54 L 1200 140 Q 860 122 540 142 T 0 132 Z" fill="#40d0a4" opacity=".35"><animate attributeName="opacity" values=".22;.4;.22" dur="19s" repeatCount="indefinite"/></path></g>
+<rect y="196" width="1200" height="64" fill="#aebfd2"/>
+<path d="M60 236 q 40 -12 84 0 M300 246 q 40 -12 84 0 M880 240 q 40 -12 84 0" stroke="#e2f0e6" stroke-width="3" fill="none"/>
+<g fill="#263448"><rect x="120" y="128" width="230" height="62"/><rect x="470" y="136" width="180" height="56"/><rect x="720" y="130" width="150" height="58"/></g>
+<g stroke="#1a2434" stroke-width="4"><line x1="140" y1="190" x2="132" y2="212"/><line x1="330" y1="190" x2="338" y2="212"/><line x1="486" y1="192" x2="480" y2="212"/><line x1="634" y1="192" x2="640" y2="212"/></g>
+<g stroke="#141c28" stroke-width="2"><line x1="220" y1="128" x2="220" y2="98"/><line x1="560" y1="136" x2="560" y2="108"/></g>
+<rect x="176" y="146" width="18" height="24" fill="#f0ead0"><animate attributeName="opacity" values=".82;1;.82" dur="7s" repeatCount="indefinite"/></rect>
+<rect x="540" y="152" width="18" height="24" fill="#f0ead0"><animate attributeName="opacity" values="1;.8;1" dur="9s" repeatCount="indefinite"/></rect>
+<g><line x1="1010" y1="212" x2="1010" y2="96" stroke="#141a24" stroke-width="5"/><circle cx="1010" cy="90" r="6" fill="#b28a4a"/>
+<g><polygon points="1015,100 1096,92 1096,128 1015,138" fill="#40d0a4"/><polygon points="1015,120 1096,112 1096,128 1015,138" fill="#f0ead0"/><polygon points="1078,94 1096,92 1096,128 1078,130" fill="#2c3e52"><animateTransform attributeName="transform" type="skewY" values="0;2.5;0;-2;0" dur="2.8s" repeatCount="indefinite"/></polygon><animateTransform attributeName="transform" type="skewY" values="0;2;0;-1.5;0" dur="2.8s" repeatCount="indefinite"/></g></g>
+<g><line x1="930" y1="212" x2="930" y2="130" stroke="#1c2634" stroke-width="4"/><g><polygon points="930,134 986,140 984,154 930,150" fill="#c4783e"/><polygon points="930,134 954,137 953,151 930,150" fill="#f0ead0"/><animateTransform attributeName="transform" type="rotate" values="-7 930 142;9 930 142;-7 930 142" dur="8s" repeatCount="indefinite"/></g></g>
+</svg>

@@ -1,7 +1,17 @@
+![Intro scenery: a polar station yard under aurora curtains, a flag working in the wind](intro-banner.png)
+
 # RunAsDate-for-MacOS
+
+![Wordmark banner: the station at night, its name painted on the weather board beside the main hut door](banner.png)
+
+![Animated scene: aurora drifting over the station yard, a flag snapping, a windsock swinging](scene.svg)
+
 A "Run as Date" launcher is a tool that allows you to run an application on a specific date and time, rather than the current date and time. This can be useful for testing software that has expiration dates, or for running older versions of applications that are no longer supported on the current operating system.
 
 Until recently, this type of tool was not available for macOS. However, I have found a way to create a "Run as Date" launcher for macOS.
+
+
+![Separator](sep-heavy.svg)
 
 # The solution
 When trying to solve the "Run as Date" problem on macOS, I first researched existing solutions and found that there were no readily available tools for this specific task. However, I knew that it was possible to change the system date and time using Terminal commands, so I began experimenting with different command line utilities to see if I could find a way to automate the process.
@@ -11,6 +21,9 @@ After some experimentation, I discovered that I could use a combination of the "
 Next, I wanted to make this process more user-friendly and accessible to others, so I decided to convert the shell script into an Apple Shortcut. I used the "Run Script" action in the Shortcuts app to run the shell script, and added additional actions to make the shortcut more functional and intuitive to use.
 
 Overall, it was a process of experimentation and problem solving, but I was able to find a way to automate the "Run as Date" process using Terminal and shell script, and then convert it into an Apple Shortcut for easy use.
+
+
+![Separator](sep-heavy.svg)
 
 # Instructions ( What you need to do ? )
 To use the Apple Shortcut, follow these steps:
@@ -39,3 +52,7 @@ It's important to remember that the script runs with root rights and it changes 
 
 
 
+
+![Separator](sep-light.svg)
+
+> **Log margin note:** the script runs with root rights and it changes the real system clock. The shortcut is signed and encrypted, and its full script text is not published in readable form.
