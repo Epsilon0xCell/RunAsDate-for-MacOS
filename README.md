@@ -1,8 +1,11 @@
-![Intro scenery: a polar station yard under aurora curtains, a flag working in the wind](intro-banner.png)
+![Intro: the brass desk calendar settled on its new day on the mahogany desk, its blank ivory drums at rest, the small red marker on its base and the screen behind lit with a blank glowing window](intro-banner.png)
+
 
 # RunAsDate-for-MacOS
 
-![Wordmark banner: the station at night, its name painted on the weather board beside the main hut door](banner.png)
+<p align="center"><img src="logo.png" alt="RunAsDate-for-MacOS logo: a brass perpetual desk calendar seen straight on, three blank ivory date tiles in its window, a polished turning knob at each side and a red marker clipped to the rail below" width="200"></p>
+
+![Banner: a hand turning the side knob of a brass desk calendar on a mahogany desk, its three blank ivory drums mid roll, a computer screen glowing softly behind with a blank window open](banner.png)
 
 ![Animated scene: aurora drifting over the station yard, a flag snapping, a windsock swinging](scene.svg)
 
