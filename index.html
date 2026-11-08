@@ -3,50 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RunAsDate-for-MacOS: The Station Logbook</title>
-<meta name="description" content="An Apple Shortcut for macOS that changes the system date to a chosen earlier date, opens an application under that date, waits a few seconds, then puts the date back.">
+<title>RunAsDate-for-MacOS: The Calendar Desk</title>
+<meta name="description" content="An Apple Shortcut that rolls the Mac system date back to a chosen day, opens an app inside that day, waits a few seconds, then restores the true date. The brass desk calendar is the whole machine: turn it, launch, turn it back.">
 <style>
-@font-face{font-family:'Anek Gurmukhi';src:url('fonts/AnekGurmukhi.ttf') format('truetype');}
-@font-face{font-family:'Barlow';src:url('fonts/Barlow.ttf') format('truetype');}
-:root{--slate:#172234;--slate2:#232f47;--jade:#40d0a4;--cream:#f0ead0;--brass:#b28a4a}
-*{box-sizing:border-box} body{margin:0;background:var(--slate);color:var(--cream);font-family:'Barlow',sans-serif;line-height:1.65}
-h1,h2{font-family:'Anek Gurmukhi',sans-serif;color:var(--jade)}
-.hero{padding:2rem 6vw 1rem;max-width:1000px;margin:0 auto}.hero img.banner{width:100%;height:auto}
-.logo{width:92px;height:92px}
-main{padding:0 6vw 3rem;max-width:1000px;margin:0 auto}
-.entry{background:var(--cream);color:var(--slate);padding:1.2rem 1.5rem 1.2rem 4.2rem;margin:1.4rem 0;position:relative;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(23,34,52,.14) 28px)}
-.num{position:absolute;left:1.1rem;top:1rem;color:var(--brass);font-family:'Anek Gurmukhi',sans-serif;font-size:1.5rem}
-.entry h2{color:var(--slate);border-bottom:2px solid var(--jade);padding-bottom:.3rem}
-.slip{display:inline-block;background:var(--cream);color:var(--slate);font-family:'Anek Gurmukhi',sans-serif;text-decoration:none;padding:.55rem 1rem .55rem 1.4rem;border:1px solid var(--slate);border-left:10px solid var(--brass);margin:.3rem .3rem .3rem 0}
-.slip:hover{border-color:var(--jade);border-left-color:#d8ab5e}
-.slip:active{background:#ddd2ae}
-.slip:focus-visible{outline:2px solid var(--jade);outline-offset:3px}
-a{color:var(--cream)} a:before{content:'';display:inline-block;width:.8em;height:.5em;background:linear-gradient(90deg,var(--cream) 40%,#c4783e 40%);clip-path:polygon(0 15%,100% 35%,100% 65%,0 85%);margin-right:.4em;transition:transform .2s}
-a:hover{color:var(--brass)} a:hover:before{transform:rotate(24deg)} .slip:before{content:none}
-code{color:#0d5c43;font-weight:600}.entry code{background:rgba(178,138,74,.18);padding:.05rem .3rem}
-.margin{background:#fffbe9;border-left:10px solid var(--brass);padding:.7rem 1rem;color:var(--slate);max-width:36rem}
-.star{margin:2rem auto;text-align:center}.star svg{display:block;margin:0 auto}
-pre{background:#fffbe9;padding:1rem;overflow-x:auto;border:1px solid var(--brass);color:var(--slate)}
-footer{padding:2rem 6vw;color:var(--cream)}
+@font-face{font-family:'Libre Baskerville';src:url('fonts/libre-baskerville-400.woff2') format('woff2');font-weight:400}
+@font-face{font-family:'Libre Baskerville';src:url('fonts/libre-baskerville-700.woff2') format('woff2');font-weight:700}
+@font-face{font-family:'Public Sans';src:url('fonts/public-sans-400.woff2') format('woff2');font-weight:400}
+@font-face{font-family:'Public Sans';src:url('fonts/public-sans-600.woff2') format('woff2');font-weight:600}
+@font-face{font-family:'Public Sans';src:url('fonts/public-sans-700.woff2') format('woff2');font-weight:700}
+:root{--desk:#2b1708;--desk2:#3a2010;--brass:#b08a3e;--brasslt:#d9b96a;--ivory:#f5eeda;--paper:#efe4c8;--ink:#2a1c10;--red:#b23a1d}
+*{box-sizing:border-box} body{margin:0;background:var(--desk);color:var(--ink);font-family:'Public Sans',sans-serif;line-height:1.65}
+h1,h2{font-family:'Libre Baskerville',serif}
+.hero{max-width:1060px;margin:0 auto;padding:2rem 5vw 0}.hero img.frame{width:100%;height:auto;display:block;border:6px solid var(--brass);outline:2px solid #120a03}
+.hero .strip{display:flex;gap:1.2rem;align-items:flex-start;margin-top:1.2rem}.hero .strip img{width:96px;height:96px}
+.hero h1{color:var(--ivory);margin:.2rem 0 .4rem;font-size:2rem}.hero p{color:#e3d3a8;max-width:46rem}
+.desk{max-width:1060px;margin:1.6rem auto 3rem;padding:2rem 5vw;background:var(--desk2);position:relative}
+.tile{position:relative;background:var(--ivory);border:1.5px solid var(--brass);padding:1.1rem 1.3rem 1.1rem 3.4rem;margin:0 0 1.3rem}
+.tile .num{position:absolute;left:.8rem;top:.9rem;width:30px;height:34px;background:var(--paper);border:1.5px solid var(--brass);color:var(--ink);font-family:'Libre Baskerville',serif;font-weight:700;text-align:center;line-height:34px}
+.tile .knob{position:absolute;top:8px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--brasslt),var(--brass));border:1px solid #6d5423}
+.tile .knob.l{left:8px}.tile .knob.r{right:8px}
+.tile h2{margin:.1rem 0 .5rem;font-size:1.35rem}.tile p{margin:.4rem 0}.tile ol,.tile ul{margin:.4rem 0;padding-left:1.3rem}
+.room{font-family:'Public Sans',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:600;color:var(--red);display:block}
+.btn{display:inline-block;background:var(--ivory);color:var(--ink);font-family:'Libre Baskerville',serif;text-decoration:none;padding:.5rem 1rem;border:2px solid var(--brass);border-bottom:5px solid var(--red);margin:.3rem .4rem .3rem 0}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(1px);border-bottom-color:var(--brass)}
+.btn:focus-visible{outline:2px solid var(--brasslt);outline-offset:3px}
+a{color:#7a5410;text-decoration:none}a:hover{text-decoration:underline}
+.fmt{display:flex;gap:.5rem;flex-wrap:wrap;margin:.7rem 0}
+.fmt .cell{background:var(--paper);border:1.5px solid var(--brass);padding:.45rem .8rem;font-family:'Libre Baskerville',serif;font-weight:700;font-size:1.05rem;text-align:center}
+.fmt .cell small{display:block;font-family:'Public Sans',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#6d5423}
+.fmt .cell.today{border-color:var(--red);box-shadow:inset 0 -4px 0 var(--red)}
+figure.closer{margin:.8rem 0}figure.closer img{width:100%;height:auto;display:block;border:4px solid var(--brass)}
+figure.closer figcaption{font-size:.85rem;color:#6d5423;margin-top:.35rem}
+.warn{border:2px solid var(--red);background:#f7e3d3}
+code{background:#e7dcbc;padding:.05rem .3rem}
+pre{background:var(--desk);color:var(--ivory);padding:.8rem 1rem;overflow-x:auto;font-size:.9rem}
+footer{max-width:1060px;margin:0 auto;padding:0 5vw 2.5rem;color:#c9b183}
 </style>
 </head>
 <body>
 <header class="hero">
-<img class="logo" src="assets/logo.png" alt="Station flag, jade over cream with a slate stripe, on a brass pole">
-<img class="banner" src="assets/banner.png" alt="Polar station at night under aurora curtains, the weather board beside the main hut door carrying the project name">
-<h1>RunAsDate-for-MacOS</h1>
-<p>The station logbook for one winter: each part of the job gets its own dated entry, ruled off in order.</p>
-<p><a class="slip" href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS">Open the repo</a> <a class="slip" href="#warning">Read the warning entry</a></p>
+<img class="frame" src="assets/banner.png" alt="A hand turning the side knob of a brass desk calendar on a mahogany desk, its three blank ivory drums mid roll, a computer screen glowing softly behind with a blank window open">
+<div class="strip"><img src="assets/logo.png" alt="A brass perpetual desk calendar seen straight on, three blank ivory date tiles in its window, a polished turning knob at each side and a red marker clipped to the rail below"><div><h1>RunAsDate-for-MacOS</h1><p>Run as Date is a small Windows launcher with no Mac equivalent, so this repository builds the same job as an Apple Shortcut. The shortcut turns the system date back to a day you choose, opens the app inside that day, waits a few seconds, then turns the date back to today. The page below reads like the calendar on the desk: one tile at a time, in order.</p><p><a class="btn" href="https://github.com/Epsilon0xCell/RunAsDate-for-MacOS">Open the repo</a> <a class="btn" href="#warning">Read the warning first</a></p></div></div>
 </header>
-<main>
-<div class="star"><svg width="1200" height="22" viewBox="0 0 1200 22" style="max-width:100%"><line x1="0" y1="10" x2="1200" y2="10" stroke="#3a4c66" stroke-width="2"/><g stroke="#f0ead0" stroke-width="2"><line x1="600" y1="1" x2="600" y2="19"/><line x1="591" y1="10" x2="609" y2="10"/><line x1="594" y1="4" x2="606" y2="16"/><line x1="606" y1="4" x2="594" y2="16"/></g></svg></div>
-<section class="entry"><span class="num">1</span><h2>Entry one: the situation</h2><p>This project is an Apple Shortcut for macOS. It changes the Mac system date to a chosen earlier date, opens an application under that date, waits a few seconds, and then puts the system date back. It exists for testing software with expiry dates and for coaxing older applications that object to the current date.</p></section>
-<section class="entry"><span class="num">2</span><h2>Entry two: getting the shortcut</h2><p><b style="color:var(--brass)">1.</b> Download the file <code>Run_As_Date.shortcut</code> from the repository.</p><p><b style="color:var(--brass)">2.</b> Double click it.</p><p><b style="color:var(--brass)">3.</b> Add it to the Shortcuts library.</p></section>
-<section class="entry"><span class="num">3</span><h2>Entry three: setting it up</h2><p>Open the shortcut in the app, not with the play button, and edit two things. The date goes in as <code>MMDDHHmmYY</code>: month first, minutes in small m, year last. The application is set by swapping the example path <code>/Applications/Infuse.app</code> for the path of whatever app you want to launch.</p><div class="margin"><p>Margin note: the script contains a <code>sleep 6</code> step, six seconds before the date reverts. If your app launches slowly, raise that number.</p></div></section>
-<section class="entry"><span class="num">4</span><h2>Entry four: running it</h2><p>Tap the shortcut in the Shortcuts app or call it up with Siri. The shortcut can be extended with an action that asks for the date and application on every run, for people who switch apps often.</p></section>
-<div class="star"><svg width="400" height="10" viewBox="0 0 400 10" style="max-width:40%"><line x1="110" y1="5" x2="290" y2="5" stroke="#3a4c66" stroke-width="2"/></svg></div>
-<section class="entry" id="warning"><span class="num">5</span><h2>Entry five: the warning, ruled off</h2><p>The shortcut runs with root rights and it moves the real system clock, not a pretend clock inside one app. The shortcut file itself is signed and encrypted, and its full script text is not published in readable form, so this page describes only what the README describes and claims nothing beyond it.</p></section>
+<main class="desk">
+<section class="tile"><span class="knob l"></span><span class="knob r"></span><span class="num">1</span><span class="room">The job</span><h2>Launch an app inside another day</h2><p>The shortcut is <code>Run_As_Date.shortcut</code> in the repository. Behind it is a shell script built from the Mac terminal commands <code>date</code>, which sets the system clock, and <code>open</code>, which launches an application by its path. The script sets the date, opens the app, sleeps, and sets the date back.</p><p>It exists for the jobs a changed clock is genuinely for: testing an app around its expiry date, exercising date sensitive behaviour, and coaxing older software that checks what day it is.</p></section>
+<section class="tile"><span class="knob l"></span><span class="knob r"></span><span class="num">2</span><span class="room">Getting the shortcut</span><h2>Two steps, then it is in your library</h2><ol><li>Download <code>Run_As_Date.shortcut</code> from the repository and double click it, or drag it onto the Shortcuts app.</li><li>Click <strong>Add Shortcut</strong>. It joins your shortcut library, ready to edit and run.</li></ol></section>
+<section class="tile"><span class="knob l"></span><span class="knob r"></span><span class="num">3</span><span class="room">Setting the day</span><h2>The date is written as one string</h2><p>Open the shortcut by double clicking it (tapping the play button runs it instead). The date the Mac will wake up in is a single string in the format <code>MMDDHHmmYY</code>. Read it tile by tile:</p><div class="fmt"><span class="cell">MM<small>Month</small></span><span class="cell">DD<small>Day</small></span><span class="cell">HH<small>Hour</small></span><span class="cell">mm<small>Minutes</small></span><span class="cell">YY<small>Two digit year</small></span></div><p>The capital M is the month and the small m is the minutes; the format leaves no room to swap them. To aim the shortcut at a different application, replace the example path <code>/Applications/Infuse.app</code> with the path of the app you want. The line <code>sleep 6</code> is the pause before the true date returns: raise the number for a slow launching app, because the date reverts whether the app finished opening or not.</p><p>When it reads right, give the shortcut a name and tap Done. It runs from the Shortcuts app, or out loud through Siri. It can also be extended with an action that asks for the date and the app at run time, so one shortcut serves every target.</p></section>
+<section class="tile"><span class="knob l"></span><span class="knob r"></span><span class="num">4</span><span class="room">The closer look</span><h2>Settled on the chosen day</h2><figure class="closer"><img src="assets/intro-banner.png" alt="The brass desk calendar settled on its new day on the mahogany desk, its blank ivory drums at rest, the small red marker on its base and the screen behind lit with a blank glowing window"><figcaption>The roll finished: the drums at rest on the chosen day, the screen behind already awake inside it.</figcaption></figure><p>That stillness is the whole trick. Nothing about the app changes. Only the day it wakes up in does, and only for the few seconds the script allows before the calendar rolls home again.</p></section>
+<section class="tile warn" id="warning"><span class="knob l"></span><span class="knob r"></span><span class="num">!</span><span class="room">The warning, kept in full</span><h2>It changes the real clock, with root rights</h2><p>The README carries a warning and this page repeats it without softening: the script inside runs with root rights and changes the actual system date while it works. Anything else on the Mac that reads the clock during those seconds reads the rolled back day too. Use it deliberately, the way you would turn a desk calendar by hand: knowing you turned it.</p><p>One honest limit, also from the README: the shipped shortcut file is signed and encrypted, so its full script text is not published anywhere in readable form. This page describes exactly what the README describes, and claims nothing past it.</p></section>
 </main>
-<footer><p>RunAsDate-for-MacOS: the calendar turned back for a few seconds, then put right, and the watch ends with the true date showing again.</p></footer>
+<footer><p>RunAsDate-for-MacOS: the calendar turns, the app opens in yesterday, and the true date is back before the kettle boils.</p></footer>
 </body>
 </html>
